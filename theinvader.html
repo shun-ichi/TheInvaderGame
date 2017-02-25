@@ -406,7 +406,6 @@ function move_plane()
 	var d;
 	var rnd;
 
-//	playing = false;
 	if (!enable) {
 		setTimeout("move_plane()",25);
 		return;
@@ -428,8 +427,6 @@ function move_plane()
 			if (!enemy[n].move(dx,dy,n)) {
 				hide_plane();
 				show_crash_plane(0,0);
-//				paudio.play();
-//				playing = true;
 				wait_play();
 				playing(paudio,'p');
 				game_over();
@@ -491,7 +488,6 @@ function move_plane()
 		misile.posx = posx + 4;
 		misile.posy = posy - 4;
 		misile.show();
-//		oaudio.play();
 		wait_play();
 		playing(oaudio,'o');
 	}
@@ -577,8 +573,6 @@ function shock_misile_enemy()
 					enemy[i].hide(i);
 					enemy[i].alive = false;
 					show_cloud(i);
-//					eaudio.play();
-//					playing = true;
 					wait_play();
 					playing(eaudio,'e');
 					setTimeout("hide_cloud(" + i + ")",100);
@@ -619,8 +613,6 @@ function shock_misile_ufo()
 //				ufo.hide();
 				ufo.appear = false;
 				show_fire_ufo();
-//				uaudio.play();
-//				playing = true;
 				wait_play();
 				playing(uaudio,'u');
 				setTimeout("hide_fire_ufo();",500);
@@ -652,13 +644,13 @@ function game_over()
 	ob.style.visibility = "visible";
 
 	ob = document.getElementById("start");
-	ob.innerHTML = "<form action=\"ranking.php\" method=\"POST\">" +
+	ob.innerHTML = /* "<form action=\"ranking.php\" method=\"POST\">" +
 		"ランキング登録するには<br />ここに名前を記入して下さい：<br />" +
 		"<input type=\"text\" name=\"name\" value=\"\" autofocus /><br /><br />" +
 		"<input type=\"hidden\" name=\"point\" value=\"" + score + "\" />" +
 		"<input type=\"submit\" value=\"ランキング登録する\" />" +
-		"</form>" +
-		"<input type=\"button\" value=\"ランキング登録しない\" onclick=\"replay()\" />";
+		"</form>" + */
+		"<input type=\"button\" value=\"リプレイ\" onclick=\"replay()\" />";
 }
 
 function shock_bomb_plane()
@@ -682,8 +674,6 @@ function shock_bomb_plane()
 			y = posy;
 //			hide_plane();
 			show_crash_plane(x,y);
-//			paudio.play();
-//			playing = true;
 			wait_play();
 			playing(paudio,'p');
 			alive_plane--;
@@ -711,8 +701,6 @@ function shock_bomb_plane()
 			y = posy;
 //			hide_plane();
 			show_crash_plane(x,y);
-//			paudio.play();
-//			playing = true;
 			wait_play();
 			playing(paudio,'p');
 			alive_plane--;
@@ -977,8 +965,6 @@ function wait_play()
 	return; // Added on 2016.1.22
 	if (buser == "Ch" || buser == "Fi") return;
 
-//	while ((!oafirst && !oaudio.ended) || (!eafirst && !eaudio.ended) ||
-//		(!pafirst && !paudio.ended) || (!uafirst && !uaudio.ended)) ;
 	if (!oafirst) while (!oaudio.ended) ;
 	if (!eafirst) while (!eaudio.ended) ;
 	if (!pafirst) while (!paudio.ended) ;
@@ -1203,11 +1189,13 @@ ob.innerHTML = "<h1>ザ・インベーダー（ゲーム）</h1>" +
 	"無料ゲームです。<br />" +
 	"Chrome、Firefox、またはInternetExplorerをお使い下さい。<br />" +
 	"<input type=\"button\" value=\"ザ・インベーダーを始める\" onclick=\"main()\" /><br />" +
-	"<br /><a href=\"../../\">トップページへ</a>";
+	"<br />";
 //main();
 </script>
-<?php require_once("theinvaderext.php"); ?>
+<!--?php require_once("theinvaderext.php"); ?-->
 </body>
 <!-- Copyright(c) 2015 S&S          -->
-<!-- この著作権はＳ＆Ｓが保有します -->
+<!-- 著作：Ｓ＆Ｓ                   -->
+<!-- Copyright(c) 2017 shun-ich     -->
+<!-- 著作：shun-ich                 -->
 </html>
