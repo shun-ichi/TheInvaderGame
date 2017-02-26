@@ -849,7 +849,7 @@ function cbomb()	// クラスcbombの定義
 	{
 		var ob = document.getElementById("bomb" + n);
 		ob.style.left = this.posx * 4 - 1 + BASE_POSITION_X + "px";
-		ob.style.top = this.posy * 4 + BASE_POSITION_Y + "px";
+		ob.style.top = (this.posy - 1) * 4 + BASE_POSITION_Y + "px";
 		ob.style.visibility="visible";
 		this.appear = true;
 	}
@@ -864,7 +864,7 @@ function cbomb()	// クラスcbombの定義
 	this.move = function(n)
 	{
 		if (this.appear) {
-			if (this.posy == MASU_Y_NUMBER - 1) this.hide(n);
+			if (this.posy >= MASU_Y_NUMBER - 1) this.hide(n);
 			else {
 				this.posy++;
 				this.show(n);
